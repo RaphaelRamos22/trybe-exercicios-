@@ -22,6 +22,17 @@ if(result/numbers.length > 20){
     console.log('valor menor que 20')
 }
 //exercicio 5
+let maiorNumero = numbers[0]
+
+for(i =0;  i< numbers.length; i++){
+  
+    if(numbers[i] > maiorNumero){
+      maiorNumero = numbers[i]
+           
+    }    
+}  console.log(maiorNumero)
+
+
 
 //exercicios 6
 let count = 0;
@@ -37,8 +48,19 @@ if(count === 0){
 console.log (count) 
 }
 
-//exercicio 7 
+//exercicio 7
+let menorNumero = numbers[0] 
+for(i =0;  i< numbers.length; i++){
+  
+    if(numbers[i] < menorNumero){
+      menorNumero = numbers[i]
+           
+    }    
+}  console.log(menorNumero)
+
+
 //exercicio 8
+
 let num=[];
 for(i =1; i<=25; i++){
 num.push(i)
