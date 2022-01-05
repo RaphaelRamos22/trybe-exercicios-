@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+    <fieldset class="curriculum">
+        <div>
+        <label for="name">Nome completo:</label>
+        <input type="text" name="name" id="name" required maxlength="40">
+        </div>
+        <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" required maxlength="50">
+        </div>
+        <div>
+        <label for="cpf">cpf:</label>
+        <input type="text" name="cpf" id="cpf" required maxlength="11">
+        </div>
+        <div>
+        <label for="Address">Endereço:</label>
+        <input type="text" name="Address" id="Address" required maxlength="200">
+        </div>
+        <div>
+        <label for="city">Cidade:</label>
+        <input type="text" name="city" id="city" required maxlength="28">
+        </div>
+        <div>
+        <div>
+        <label for="state">Estado: </label>
+        <select name="state" id="state" required>
+        <option disabled selected value>Selecione seu estado</option>
+        </select>
+        </div>
+    </fieldset>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
