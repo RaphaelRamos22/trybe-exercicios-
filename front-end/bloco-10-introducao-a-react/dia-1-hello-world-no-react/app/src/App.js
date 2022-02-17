@@ -1,22 +1,19 @@
 import './App.css';
 import React, { Component } from 'react';
 import Header from './compent/Header';
-
-const Task = (value) => {
-  return(   
-     <li> {value} </li>
-  )
- }
-
- const array = ['JSX', 'ReactDOM.render']
+import Task from './compent/Task';
+import Content from './compent/Content';
 
 class App extends Component {
   render(){
-  return(
-    <>
-      <Header />
-      <ul>{ array.map(element => Task(element))}</ul> 
-    </>
+    return(
+      <>
+        <Header />
+        <main>
+          <Task />
+          <Content />
+        </main>
+      </>
     )
   }
 }
