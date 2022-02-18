@@ -6,7 +6,7 @@ class Pokelist extends Component{
     render(){
         return(
             pokemons.map(pokemon =>(
-                <div>
+                <div key={pokemon.id} className="pokedex">
                     <Pokedex poke = {pokemon}/>
                 </div>
             ))

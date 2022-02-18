@@ -7,7 +7,9 @@ class App extends Component {
     return (
           <main>
               <h1>Pokedex</h1>
-              <Pokelist />
+              <div className= "cart" >
+                <Pokelist />
+              </div>
           </main>    
       );
   }
