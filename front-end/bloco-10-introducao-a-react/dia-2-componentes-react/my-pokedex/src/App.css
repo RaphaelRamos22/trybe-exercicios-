@@ -1,0 +1,33 @@
+body{
+    background-color: red;
+}
+h1{
+    text-align: center;
+}
+.cart{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.pokemon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1 1 0;
+    min-width: 25%;
+    margin: 10px 10px;
+    border: 1px gray solid;
+    border-radius: 10px;
+    background-color: aliceblue;
+    text-align: center;
+}
+  
+.pokedex {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 10px;
+    width: 45%;
+
+}
+  
