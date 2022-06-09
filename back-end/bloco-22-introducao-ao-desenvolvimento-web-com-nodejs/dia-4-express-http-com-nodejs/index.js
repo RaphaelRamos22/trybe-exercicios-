@@ -25,4 +25,20 @@ app.get('/simpsons', async (req, res) => {
   }
 });
 
+app.get('/simpsons/:id', async (req, res) => {
+  try {
+    const simpsons = await simpsonsUtils.getSimpsons();
+
+    const simpson = simpsons.find(({ id }) => id === req.params.id);
+
+    if (!simpson) {
+      return res.status(404).json({ message: 'simpson not found' });
+    }
+
+    return res.status(202).json(simpson);
+  } catch (error) {
+    return res.status(500).end();
+  }
+});
+
 app.listen(3000, () => console.log('ouvindo na porta 3000!'));
