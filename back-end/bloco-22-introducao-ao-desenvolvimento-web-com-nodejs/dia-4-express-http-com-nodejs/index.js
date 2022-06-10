@@ -61,4 +61,17 @@ app.post('/simpsons', async (req, res) => {
   }
 });
 
+app.delete('/simpsons/:id', async (req, res) => {
+
+  const simpsons = await simpsonsUtils.getSimpsons();
+
+  const simpson = simpsons.findIndex(({ id }) => id === req.params.id)
+  if (simpson === -1) return res.status(404).json({ message: 'Recipe not found!' });
+  simpsons.splice(simpson, 1);
+  await simpsonsUtils.setSimpsons(simpsons);
+
+  res.status(204).end();
+});
+
+
 app.listen(3000, () => console.log('ouvindo na porta 3000!'));
