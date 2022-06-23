@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const UserModel = require('../models/User')
 
 const userSchema = Joi.object({
 	firstName: Joi.string().required(),
