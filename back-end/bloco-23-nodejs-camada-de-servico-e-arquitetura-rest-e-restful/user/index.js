@@ -16,5 +16,6 @@ app.post('/user', middlewares.createUser, async (req, res) => {
 	res.status(201).json(newUser);
 })
 
+app.use(middlewares.error);
 
 app.listen(PORT, () => { console.log(`App listening on port ${PORT}`); });
