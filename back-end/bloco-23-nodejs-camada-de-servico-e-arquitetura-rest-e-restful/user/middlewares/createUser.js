@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const rescue = require('express-rescue');
 const UserModel = require('../models/User')
 
 const userSchema = Joi.object({
