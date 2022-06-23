@@ -16,4 +16,9 @@ const query = 'INSERT INTO users (first_name, last_name, email, password) VALUES
 return await connection.execute(query, [firstName, lastName, email, password])
 }
 
-module.exports = { formatUser, create };
+const userAll = async () => {
+	const [user] = await connection.execute('SELECT * from users;')
+	return user
+}  
+
+module.exports = { formatUser, create, userAll  };
