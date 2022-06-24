@@ -20,6 +20,11 @@ app.get('/user', async (_req, res) => {
 	const allUsers = await UserModel.userAll();
 	res.status(200).json(allUsers)
 })
+app.get('/user/:id', async (req, res) => {
+	const { id } = req.params;
+	const user = await UserModel.userFildById(id);
+	return res.status(200).json(user);
+})
 
  app.use(middlewares.error);
 

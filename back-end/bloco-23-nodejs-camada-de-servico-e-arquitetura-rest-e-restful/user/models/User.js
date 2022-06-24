@@ -13,7 +13,7 @@ return {
 const create = async({ firstName, lastName, email, password }) => {
 const query = 'INSERT INTO users (first_name, last_name, email, password) VALUES (?,?,?,?)';
 
-return await connection.execute(query, [firstName, lastName, email, password])
+return await connection.execute(query, [firstName, lastName, email, password], 'utf-8', '/t')
 }
 
 const userAll = async () => {
@@ -21,4 +21,9 @@ const userAll = async () => {
 	return user
 }  
 
-module.exports = { formatUser, create, userAll  };
+const userFildById = async (id) => {
+	 const [user] = await connection.execute('SELECT * FROM users WHERE id = ?', [id])
+	 return user
+}
+
+module.exports = { formatUser, create, userAll, userFildById  };
