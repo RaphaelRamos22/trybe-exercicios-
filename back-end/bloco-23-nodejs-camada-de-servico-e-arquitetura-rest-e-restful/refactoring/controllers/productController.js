@@ -11,7 +11,7 @@ router.get('/', async (_req, res) => {
 router.get('/:id', async (req, res) => {
   const product = await ProductModel.getById(req.params.id);
 
-  res.send(product);
+  res.status(200).json(product);
 });
 
 router.post('/', async (req, res) => {
@@ -19,13 +19,13 @@ router.post('/', async (req, res) => {
 
   const newProduct = await ProductModel.add(name, brand);
 
-  res.send(newProduct);
+  res.status(201).json(product);
 });
 
 router.post('/:id', async (req, res) => {
   const products = await ProductModel.exclude(req.params.id);
 
-  res.send(products);
+  res.status(204).json(product);
 });
 
 router.post('/:id', async (req, res) => {
@@ -33,7 +33,7 @@ router.post('/:id', async (req, res) => {
 
   const products = await ProductModel.update(req.params.id, name, brand);
 
-  res.send(products);
+  res.status(200).json({ name, brand });
 });
 
 module.exports = router;
