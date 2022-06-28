@@ -1,39 +1,87 @@
 const express = require('express');
-const ProductModel = require('../models/productModel');
+const productService = require('../services/productService');
 
 const router = express.Router();
 
-router.get('/', async (_req, res) => {
-  const products = await ProductModel.getAll();
-  res.status(200).json(products);
-});
 
-router.get('/:id', async (req, res) => {
-  const product = await ProductModel.getById(req.params.id);
+const getAll = async (req, res) => {
+  try {
+    const results = await productService.getAll();
+    if (!results) {
+     return res.status(httpStatus.NOT_FOUND).json({ message: 'Não há elementos :(' });
+   }
+    res.status(httpStatus.OK).json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(httpStatus.INTERNAL_SERVER).json({ message: 'Erro ao tentar realizar operação' });
+  }
+}
 
-  res.status(200).json(product);
-});
+const getById = async (req, res) => {
+  try {
+    const { id } = req.params;
 
-router.post('/', async (req, res) => {
-  const { name, brand } = req.body;
+    const result = await productService.getById(id);
+    if (!result || result.length < 1) {
+     return res.status(httpStatus.NOT_FOUND).json({ message: 'Character não encontrada :(' });
+    }
+    res.status(httpStatus.OK).json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(httpStatus.INTERNAL_SERVER).send('Erro ao tentar realizar operação');
+  }
+}
 
-  const newProduct = await ProductModel.add(name, brand);
+const add = async (req, res) => {
+  try {
+    const { name, brand } = req.body;
 
-  res.status(201).json(product);
-});
+    
+    const result = await productService.add(name, brand);
 
-router.delete('/:id', async (req, res) => {
-  const products = await ProductModel.exclude(req.params.id);
+    res.status(httpStatus.CREATED).json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(httpStatus.INTERNAL_SERVER).send('Erro ao tentar realizar operação');
+  }
+}
 
-  res.status(204).json(product);
-});
+const exclude = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await productService.exclude(id); 
 
-router.put('/:id', async (req, res) => {
-  const { name, brand } = req.body;
+    if (result === null || result.length < 1) {
+     return res.status(httpStatus.NOT_FOUND).json({ message: 'Character não encontrada :(' });
+    }
+    return res.status(httpStatus.OK).json({ message: 'Character excluída com sucesso' });
+  } catch (err) {
+    console.error(err);
+    res.status(httpStatus.INTERNAL_SERVER).json({ message: 'Erro ao tentar realizar operação' });
+  }
+}
 
-  const products = await ProductModel.update(req.params.id, name, brand);
+const update = async (req, res) => {
+  try {
+    const { name, brand } = req.body;
+    const { id } = req.params;
 
-  res.status(200).json({ name, brand });
-});
+    const result = await productService.update(id,  name, brand);
 
-module.exports = router;
+  if (result.length === 0) {
+     return res.status(httpStatus.NOT_FOUND).json({ message: 'Character não encontrada :(' });
+  }
+   return res.status(httpStatus.OK).json({ message: 'Character atualizada com sucesso' });
+  } catch (err) {
+    console.error(err);
+    res.status(httpStatus.INTERNAL_SERVER).json({ message: 'Erro ao tentar realizar operação' });
+  }
+}
+
+module.exports = {
+  getAll,
+  getById,
+  add,
+  update,
+  exclude,
+};
