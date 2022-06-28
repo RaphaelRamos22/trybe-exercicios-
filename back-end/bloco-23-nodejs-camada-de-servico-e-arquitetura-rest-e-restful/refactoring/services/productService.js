@@ -12,16 +12,16 @@ const getById = async (id) => {
   return result
 }
 
-const add = async (id, name, brand) => {
-  if(id && name && brand){
-      const result = await ProductModel.add(id, name, brand)
+const add = async (name, brand) => {
+  if(name && brand){
+      const result = await ProductModel.add(name, brand)
       return result
   }
   return []
 }
 
-const update = async (id, name, cartoon) => {
-  const result = await ProductModel.update(id, name, cartoon)
+const update = async (id, name, brand) => {
+  const result = await ProductModel.update(id, name, brand)
   if(result != 1) return []
   return result
 }

@@ -1,4 +1,3 @@
-const express = require('express');
 const productService = require('../services/productService');
 const httpStatus = require('../models/httpsStatusCode')
 
