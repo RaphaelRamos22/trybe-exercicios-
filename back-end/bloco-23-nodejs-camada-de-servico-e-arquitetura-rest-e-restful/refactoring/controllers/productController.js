@@ -1,8 +1,6 @@
 const express = require('express');
 const productService = require('../services/productService');
-
-const router = express.Router();
-
+const httpStatus = require('../models/httpsStatusCode')
 
 const getAll = async (req, res) => {
   try {
