@@ -1,9 +1,6 @@
-interface IUser {
+export interface IUser {
   id?: number;
-  username: string;
-  classe?: string;
-  level?: number;
-  password?: string;
+  nome: string;
+  email: string;
+  senha: string;
 }
-
-export default IUser;
